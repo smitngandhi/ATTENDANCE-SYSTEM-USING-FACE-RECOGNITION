@@ -2,6 +2,7 @@ import cv2
 import face_recognition
 import numpy as np
 import csv
+import os
 from datetime import datetime
 
 video_capture = cv2.VideoCapture(0)
@@ -9,26 +10,17 @@ video_capture = cv2.VideoCapture(0)
 known_face_encodings = []
 known_face_names = []
 
-# Load known face images and encodings
-image_paths = [
-    'C:/Users/Smit/Desktop/5th sem/AI/Face_recognition/Test_Photos/Diya.jpg',
-    'C:/Users/Smit/Desktop/5th sem/AI/Face_recognition/Test_Photos/Manan.jpg',
-    'C:/Users/Smit/Desktop/5th sem/AI/Face_recognition/Test_Photos/Prachi.jpg',
-    'C:/Users/Smit/Desktop/5th sem/AI/Face_recognition/Test_Photos/Smit.jpg',
-    'C:/Users/Smit/Desktop/5th sem/AI/Face_recognition/Test_Photos/Nikhil.jpg',
-    'C:/Users/Smit/Desktop/5th sem/AI/Face_recognition/Test_Photos/Rachana.jpg', 
-    'C:/Users/Smit/Desktop/5th sem/AI/Face_recognition/Test_Photos/Tisha.jpg'
-    'C:/Users/Smit/Desktop/5th sem/AI/Face_recognition/Test_Photos/Archana.jpg'
-    'C:/Users/Smit/Desktop/5th sem/AI/Face_recognition/Test_Photos/Ronak.jpg'
-    'C:/Users/Smit/Desktop/5th sem/AI/Face_recognition/Test_Photos/Ashutosh.jpg'
-    'C:/Users/Smit/Desktop/5th sem/AI/Face_recognition/Test_Photos/Harsh.jpg'
-    'C:/Users/Smit/Desktop/5th sem/AI/Face_recognition/Test_Photos/Jalay.jpg'
-    'C:/Users/Smit/Desktop/5th sem/AI/Face_recognition/Test_Photos/Karma.jpg'
-    'C:/Users/Smit/Desktop/5th sem/AI/Face_recognition/Test_Photos/Kaushal.jpg'
-    'C:/Users/Smit/Desktop/5th sem/AI/Face_recognition/Test_Photos/Kshitij.jpg'
-    'C:/Users/Smit/Desktop/5th sem/AI/Face_recognition/Test_Photos/Meet.jpg'
-    # Add paths for other known faces here
-]
+folder_path = 'C:/Users/Smit/Desktop/5th sem/AI/Face_recognition/Test_Photos'
+
+
+image_paths = []
+
+for photos in os.listdir(folder_path):
+    if photos.endswith((".jpg", ".jpeg", ".png", ".bmp", ".gif")):
+        image_path = os.path.join(folder_path,photos)
+        image_paths.append(image_path)
+
+
 
 for image_path in image_paths:
     image = face_recognition.load_image_file(image_path)
@@ -36,7 +28,7 @@ for image_path in image_paths:
     known_face_encodings.append(face_encoding)
 
     # Extract name from filename (assuming format like "Name.jpg")
-    name = image_path.split('/')[-1].split('.')[0]
+    name = image_path.split("\\")[-1].split('.')[0]
     known_face_names.append(name)
 
 students = known_face_names.copy()
