@@ -18,6 +18,15 @@ image_paths = [
     'C:/Users/Smit/Desktop/5th sem/AI/Face_recognition/Test_Photos/Nikhil.jpg',
     'C:/Users/Smit/Desktop/5th sem/AI/Face_recognition/Test_Photos/Rachana.jpg', 
     'C:/Users/Smit/Desktop/5th sem/AI/Face_recognition/Test_Photos/Tisha.jpg'
+    'C:/Users/Smit/Desktop/5th sem/AI/Face_recognition/Test_Photos/Archana.jpg'
+    'C:/Users/Smit/Desktop/5th sem/AI/Face_recognition/Test_Photos/Ronak.jpg'
+    'C:/Users/Smit/Desktop/5th sem/AI/Face_recognition/Test_Photos/Ashutosh.jpg'
+    'C:/Users/Smit/Desktop/5th sem/AI/Face_recognition/Test_Photos/Harsh.jpg'
+    'C:/Users/Smit/Desktop/5th sem/AI/Face_recognition/Test_Photos/Jalay.jpg'
+    'C:/Users/Smit/Desktop/5th sem/AI/Face_recognition/Test_Photos/Karma.jpg'
+    'C:/Users/Smit/Desktop/5th sem/AI/Face_recognition/Test_Photos/Kaushal.jpg'
+    'C:/Users/Smit/Desktop/5th sem/AI/Face_recognition/Test_Photos/Kshitij.jpg'
+    'C:/Users/Smit/Desktop/5th sem/AI/Face_recognition/Test_Photos/Meet.jpg'
     # Add paths for other known faces here
 ]
 
@@ -42,7 +51,6 @@ current_date = now.strftime('%Y-%m-%d')
 
 attendance_file = open(current_date + '.csv', 'w+', newline='')
 writer = csv.writer(attendance_file)
-writer.writerow(["Student name", "Time"])
 
 while True:
     ret, video_frame = video_capture.read()
@@ -56,7 +64,7 @@ while True:
         face_names = []
         for face_encoding in face_encodings:
             matches = face_recognition.compare_faces(known_face_encodings, face_encoding)
-            name = "Unknown"
+            name = ""
             face_distance = face_recognition.face_distance(known_face_encodings, face_encoding)
             best_match_index = np.argmin(face_distance)
             if matches[best_match_index]:
