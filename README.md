@@ -101,6 +101,3 @@ Jane_Smith, 12-04-2025 08:31:10
 - You can adjust the face detection frequency by modifying the `s` flag in the code.
 - The attendance data is saved in a CSV file with the current date.
 
-## License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
