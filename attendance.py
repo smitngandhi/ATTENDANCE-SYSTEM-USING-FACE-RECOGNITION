@@ -10,7 +10,7 @@ video_capture = cv2.VideoCapture(0)
 known_face_encodings = []
 known_face_names = []
 
-folder_path = 'C:/Users/Smit/Desktop/5th sem/AI/Face_recognition/Test_Photos'
+folder_path = 'C:\\Users\\Smit\\Desktop\\DESKTOP\\Github Repos\\ATTENDANCE-SYSTEM-USING-FACE-RECOGNITION\\Test_Photos\\'
 
 
 image_paths = []
